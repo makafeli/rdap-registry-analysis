@@ -20,12 +20,14 @@ This project analyzes RDAP endpoints and identifies gateway solution providers, 
 
 ## ✨ Key Features
 
+- **🔒 Password Protection**: Secure login screen with configurable authentication
 - **🔍 Comprehensive Gateway Analysis**: Interactive dashboard with market share insights
 - **📋 Registry Gateway Users**: Searchable table of all 189 gateway registrars
 - **📈 Data Visualizations**: Charts showing provider distribution and domain metrics
 - **💾 Export Functionality**: CSV export for all data tables
 - **🎨 Professional UI**: Clean, responsive design with Tailwind CSS
 - **⚡ Performance Optimized**: Fast loading with optimized build
+- **🛡️ Session Management**: Automatic logout after configurable session duration
 
 ## 🛠️ Quick Start
 
@@ -51,7 +53,16 @@ This project analyzes RDAP endpoints and identifies gateway solution providers, 
    npm start
    ```
 
-4. **Build for production**:
+4. **Configure authentication (optional)**:
+   ```bash
+   # Copy environment template
+   cp .env.example .env.local
+   
+   # Edit .env.local to set your password
+   REACT_APP_DASHBOARD_PASSWORD=your-secure-password
+   ```
+
+5. **Build for production**:
    ```bash
    npm run build
    ```
@@ -76,7 +87,35 @@ vercel --prod
 #### Option 3: GitHub Integration
 1. Connect your GitHub account to Vercel
 2. Import this repository
-3. Deploy automatically with each push
+3. **Set environment variables** in Vercel dashboard:
+   - `REACT_APP_DASHBOARD_PASSWORD`: Your secure password
+   - `REACT_APP_SESSION_DURATION_HOURS`: Session duration (default: 24)
+4. Deploy automatically with each push
+
+## 🔒 Authentication
+
+### Default Credentials
+- **Password**: `rdap2024`
+- **Session Duration**: 24 hours
+
+### Custom Configuration
+Set environment variables to customize authentication:
+
+```bash
+# In .env.local (local development)
+REACT_APP_DASHBOARD_PASSWORD=your-secure-password
+REACT_APP_SESSION_DURATION_HOURS=8
+
+# In Vercel dashboard (production)
+# Add environment variables under Settings > Environment Variables
+```
+
+### Security Features
+- **Client-side authentication** with localStorage session management
+- **Auto-logout** after configurable session duration
+- **Password masking** with show/hide toggle
+- **Session persistence** across browser refreshes
+- **Secure logout** with confirmation prompt
 
 ## 📁 Project Structure
 
