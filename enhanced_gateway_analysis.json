@@ -1,0 +1,21 @@
+{
+  "known_gateway_providers": {
+    "Tucows": {
+      "registrars": 66,
+      "domains": 20188795,
+      "unique_domains": 1
+    },
+    "RRPProxy/CentralNic": {
+      "registrars": 8,
+      "domains": 2278349,
+      "unique_domains": 1
+    }
+  },
+  "potential_gateways": [],
+  "rdap_domain_patterns": {},
+  "summary": {
+    "total_domains_with_rdap": 214508603,
+    "total_domains_known_gateways": 22467144,
+    "gateway_market_share_percent": 10.473772933013786
+  }
+}

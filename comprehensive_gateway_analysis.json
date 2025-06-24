@@ -1,0 +1,272 @@
+{
+  "analysis_date": "2025-06-24T16:31:46.565073",
+  "dataset_summary": {
+    "total_registrars": 2358,
+    "total_domains": 214508603,
+    "unique_rdap_urls": 349
+  },
+  "gateway_analysis": {
+    "total_gateway_domains": 30598472,
+    "total_self_hosted_domains": 183910131,
+    "gateway_market_share_percent": 14.264449803908331,
+    "self_hosted_market_share_percent": 85.73555019609167
+  },
+  "gateway_providers": {
+    "Tucows": {
+      "registrar_count": 66,
+      "total_domains": 20188795,
+      "market_share_percent": 9.411648165924609,
+      "rdap_urls": [
+        "endurance.rdap.tucows.com",
+        "brs.rdap.tucows.com",
+        "opensrs.rdap.tucows.com",
+        "enom.rdap.tucows.com",
+        "rdap.ascio.com",
+        "dreamhost.rdap.tucows.com",
+        "domainpeople.rdap.tucows.com",
+        "epag.rdap.tucows.com",
+        "webcentralgroup.rdap.tucows.com",
+        "tpp.rdap.tucows.com",
+        "netregistry.rdap.tucows.com",
+        "easyspace.rdap.tucows.com",
+        "paragon.rdap.tucows.com",
+        "easydns.rdap.tucows.com",
+        "papaki.rdap.tucows.com",
+        "iregister.rdap.tucows.com",
+        "registerca.rdap.tucows.com",
+        "interplanet.rdap.tucows.com",
+        "authenticweb.rdap.tucows.com",
+        "EIG.rdap.tucows.com",
+        "peoplebrowsr.rdap.tucows.com"
+      ],
+      "top_registrars": [
+        {
+          "name": "Tucows Domains Inc.",
+          "domains": 10194582
+        },
+        {
+          "name": "eNom, LLC",
+          "domains": 5314291
+        },
+        {
+          "name": "Domain.com, LLC",
+          "domains": 1749126
+        },
+        {
+          "name": "Ascio Technologies, Inc. Danmark - Filial af Ascio technologies, Inc. USA",
+          "domains": 935379
+        },
+        {
+          "name": "DreamHost, LLC",
+          "domains": 725334
+        }
+      ]
+    },
+    "RRPProxy/CentralNic": {
+      "registrar_count": 8,
+      "total_domains": 2278349,
+      "market_share_percent": 1.0621247670891782,
+      "rdap_urls": [
+        "rdap.rrpproxy.net"
+      ],
+      "top_registrars": [
+        {
+          "name": "Key-Systems GmbH",
+          "domains": 1413748
+        },
+        {
+          "name": "Key-Systems, LLC",
+          "domains": 465375
+        },
+        {
+          "name": "Moniker Online Services LLC",
+          "domains": 381144
+        },
+        {
+          "name": "IP Twins SAS",
+          "domains": 11340
+        },
+        {
+          "name": "Nakazawa Trading Co.,Ltd.",
+          "domains": 5921
+        }
+      ]
+    },
+    "LogicBoxes": {
+      "registrar_count": 115,
+      "total_domains": 8131328,
+      "market_share_percent": 3.7906768708945435,
+      "rdap_urls": [
+        "rdapserver.net"
+      ],
+      "top_registrars": [
+        {
+          "name": "PDR Ltd. d/b/a PublicDomainRegistry.com",
+          "domains": 4845099
+        },
+        {
+          "name": "Launchpad.com Inc.",
+          "domains": 729662
+        },
+        {
+          "name": "Hostinger, UAB",
+          "domains": 590290
+        },
+        {
+          "name": "BigRock Solutions Ltd.",
+          "domains": 276454
+        },
+        {
+          "name": "IHS Telekom, Inc.",
+          "domains": 160821
+        }
+      ],
+      "gateway_provider": "LogicBoxes"
+    }
+  },
+  "top_rdap_urls": [
+    {
+      "url": "rdapserver.net",
+      "registrar_count": 115,
+      "total_domains": 8131328,
+      "is_gateway": true,
+      "gateway_provider": "LogicBoxes"
+    },
+    {
+      "url": "EIG.rdap.tucows.com",
+      "registrar_count": 43,
+      "total_domains": 12991,
+      "is_gateway": true,
+      "gateway_provider": "Tucows"
+    },
+    {
+      "url": "namerdap.systems",
+      "registrar_count": 20,
+      "total_domains": 2192764,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "whois.xz.com",
+      "registrar_count": 20,
+      "total_domains": 943324,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.dynadot.com",
+      "registrar_count": 19,
+      "total_domains": 2378486,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.22.cn",
+      "registrar_count": 17,
+      "total_domains": 456186,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.rrpproxy.net",
+      "registrar_count": 8,
+      "total_domains": 2278349,
+      "is_gateway": true,
+      "gateway_provider": "RRPProxy/CentralNic"
+    },
+    {
+      "url": "www.17domain.com",
+      "registrar_count": 6,
+      "total_domains": 54,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.domain.cn",
+      "registrar_count": 5,
+      "total_domains": 20846,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.meshdigital.com",
+      "registrar_count": 4,
+      "total_domains": 1037877,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "rdap.rebel.com",
+      "registrar_count": 4,
+      "total_domains": 219148,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "whois.aliyun.com",
+      "registrar_count": 4,
+      "total_domains": 12931823,
+      "is_gateway": false,
+      "gateway_provider": null
+    },
+    {
+      "url": "apis.cscglobal.com",
+      "registrar_count": 4,
+      "total_domains": 1399118,
+      "is_gateway": false,
+      "gateway_provider": null
+    }
+  ],
+  "largest_self_hosted": [
+    {
+      "name": "GoDaddy.com, LLC",
+      "domains": 63168934,
+      "rdap_url": "rdap.godaddy.com"
+    },
+    {
+      "name": "NameCheap, Inc.",
+      "domains": 10323962,
+      "rdap_url": "rdap.namecheap.com"
+    },
+    {
+      "name": "Alibaba Cloud Computing (Beijing) Co., Ltd.",
+      "domains": 6656465,
+      "rdap_url": "whois.aliyun.com"
+    },
+    {
+      "name": "Alibaba Cloud Computing Ltd. d/b/a HiChina (www.net.cn)",
+      "domains": 5444550,
+      "rdap_url": "whois.aliyun.com"
+    },
+    {
+      "name": "GMO Internet, Inc. d/b/a Onamae.com",
+      "domains": 5325923,
+      "rdap_url": "rdap.gmo-onamae.com"
+    },
+    {
+      "name": "Google LLC",
+      "domains": 4894266,
+      "rdap_url": "domainsrdap.googleapis.com"
+    },
+    {
+      "name": "1&1 IONOS SE",
+      "domains": 4878210,
+      "rdap_url": "rdap.ionos.com"
+    },
+    {
+      "name": "Xin Net Technology Corporation",
+      "domains": 3827131,
+      "rdap_url": "rdap.xinnet.com"
+    },
+    {
+      "name": "Chengdu West Dimension Digital Technology Co., Ltd.",
+      "domains": 3536841,
+      "rdap_url": "rdap.west.cn"
+    },
+    {
+      "name": "NameSilo, LLC",
+      "domains": 3430974,
+      "rdap_url": "www.namesilo.com"
+    }
+  ]
+}

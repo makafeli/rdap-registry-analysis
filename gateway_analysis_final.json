@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "total_domains": 214508603,
+    "gateway_domains": 22467144,
+    "gateway_market_share": 10.473772933013786
+  },
+  "gateway_providers": {
+    "Tucows": {
+      "registrars": 66,
+      "domains": 20188795
+    },
+    "RRPProxy/CentralNic": {
+      "registrars": 8,
+      "domains": 2278349
+    }
+  },
+  "potential_gateways": []
+}

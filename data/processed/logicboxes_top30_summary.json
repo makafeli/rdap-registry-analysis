@@ -1,0 +1,279 @@
+{
+  "summary": {
+    "total_registrars": 124,
+    "registrars_with_websites": 116,
+    "total_domains": 10436111.0
+  },
+  "top_30_registrars": [
+    {
+      "rank": 1,
+      "iana_id": 303,
+      "name": "PDR Ltd. d/b/a PublicDomainRegistry.com",
+      "domains": 4845099.0,
+      "website": "https://publicdomainregistry.com",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 2,
+      "iana_id": 269,
+      "name": "Key-Systems GmbH",
+      "domains": 1413748.0,
+      "website": "https://www.key-systems.net",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 3,
+      "iana_id": 955,
+      "name": "Launchpad.com Inc.",
+      "domains": 729662.0,
+      "website": "https://launchpad.com",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 4,
+      "iana_id": 1636,
+      "name": "Hostinger, UAB",
+      "domains": 590290.0,
+      "website": "https://www.hostinger.com",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 5,
+      "iana_id": 1345,
+      "name": "Key-Systems, LLC",
+      "domains": 465375.0,
+      "website": "https://www.key-systems.net",
+      "website_source": "known_mapping",
+      "notes": "Part of Key-Systems group"
+    },
+    {
+      "rank": 6,
+      "iana_id": 228,
+      "name": "Moniker Online Services LLC",
+      "domains": 381144.0,
+      "website": "https://www.moniker.com",
+      "website_source": "known_mapping",
+      "notes": "Domain marketplace"
+    },
+    {
+      "rank": 7,
+      "iana_id": 1495,
+      "name": "BigRock Solutions Ltd.",
+      "domains": 276454.0,
+      "website": "https://www.bigrock.com",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 8,
+      "iana_id": 1091,
+      "name": "IHS Telekom, Inc.",
+      "domains": 160821.0,
+      "website": "https://www.ihstelekom.com",
+      "website_source": "known_mapping",
+      "notes": "Turkish hosting provider"
+    },
+    {
+      "rank": 9,
+      "iana_id": 1005,
+      "name": "NetEarth One Inc. d/b/a NetEarth",
+      "domains": 142479.0,
+      "website": "https://www.netearth.com",
+      "website_source": "known_mapping",
+      "notes": "Web hosting and domains"
+    },
+    {
+      "rank": 10,
+      "iana_id": 609,
+      "name": "Sav.com, LLC",
+      "domains": 135595.0,
+      "website": "https://www.sav.com",
+      "website_source": "known_mapping",
+      "notes": "Domain marketplace"
+    },
+    {
+      "rank": 11,
+      "iana_id": 1586,
+      "name": "MAT BAO CORPORATION",
+      "domains": 134504.0,
+      "website": "https://www.matbao.net",
+      "website_source": "known_mapping",
+      "notes": "Vietnamese hosting provider"
+    },
+    {
+      "rank": 12,
+      "iana_id": 3806,
+      "name": "Beget LLC",
+      "domains": 103122.0,
+      "website": "https://beget.com",
+      "website_source": "known_mapping",
+      "notes": "Russian hosting provider"
+    },
+    {
+      "rank": 13,
+      "iana_id": 1600,
+      "name": "Tecnocr\u00c3\u00a1tica Centro de Datos, S.L.",
+      "domains": 101516.0,
+      "website": "https://www.tecnocratica.net",
+      "website_source": "known_mapping",
+      "notes": "Spanish hosting provider"
+    },
+    {
+      "rank": 14,
+      "iana_id": 1432,
+      "name": "Alpine Domains Inc.",
+      "domains": 81068.0,
+      "website": "https://www.alpinedomains.com",
+      "website_source": "known_mapping",
+      "notes": "Domain registrar"
+    },
+    {
+      "rank": 15,
+      "iana_id": 1534,
+      "name": "Aerotek Bilisim Sanayi ve Ticaret AS",
+      "domains": 80389.0,
+      "website": "https://www.aerotek.com.tr",
+      "website_source": "known_mapping",
+      "notes": "Turkish hosting provider"
+    },
+    {
+      "rank": 16,
+      "iana_id": 819,
+      "name": "Reg2C.com Inc.",
+      "domains": 75272.0,
+      "website": "https://www.reg2c.com",
+      "website_source": "known_mapping",
+      "notes": "Domain registrar"
+    },
+    {
+      "rank": 17,
+      "iana_id": 1483,
+      "name": "Neubox Internet S.A. de C.V.",
+      "domains": 62661.0,
+      "website": "https://www.neubox.com",
+      "website_source": "known_mapping",
+      "notes": "Mexican hosting provider"
+    },
+    {
+      "rank": 18,
+      "iana_id": 1710,
+      "name": "Nhan Hoa Software Company Ltd.",
+      "domains": 57102.0,
+      "website": "https://www.nhanhoa.com",
+      "website_source": "known_mapping",
+      "notes": "Vietnamese hosting provider"
+    },
+    {
+      "rank": 19,
+      "iana_id": 1112,
+      "name": "Internet Invest, Ltd. dba Imena.ua",
+      "domains": 47650.0,
+      "website": "https://www.imena.ua",
+      "website_source": "known_mapping",
+      "notes": "Ukrainian domain registrar"
+    },
+    {
+      "rank": 20,
+      "iana_id": 1913,
+      "name": "DOTSERVE INC.",
+      "domains": 41645.0,
+      "website": "https://www.dotserve.com",
+      "website_source": "known_mapping",
+      "notes": "Domain services"
+    },
+    {
+      "rank": 21,
+      "iana_id": 1895,
+      "name": "Namespro Solutions Inc.",
+      "domains": 38321.0,
+      "website": "https://www.namespro.ca",
+      "website_source": "known_mapping",
+      "notes": "Canadian registrar"
+    },
+    {
+      "rank": 22,
+      "iana_id": 1082,
+      "name": "Register4Less, Inc.",
+      "domains": 33943.0,
+      "website": "https://www.register4less.com",
+      "website_source": "known_mapping",
+      "notes": "Budget domain registrar"
+    },
+    {
+      "rank": 23,
+      "iana_id": 1660,
+      "name": "Domainshype.com, LLC",
+      "domains": 33214.0,
+      "website": "https://www.domainshype.com",
+      "website_source": "known_mapping",
+      "notes": "Domain registrar"
+    },
+    {
+      "rank": 24,
+      "iana_id": 1086,
+      "name": "Marcaria.com International, Inc.",
+      "domains": 32200.0,
+      "website": "https://www.marcaria.com",
+      "website_source": "known_mapping",
+      "notes": "Trademark and domain services"
+    },
+    {
+      "rank": 25,
+      "iana_id": 3812,
+      "name": "Innovadeus Pvt. Ltd.",
+      "domains": 29557.0,
+      "website": "https://www.innovadeus.com",
+      "website_source": "known_mapping",
+      "notes": "Indian domain registrar"
+    },
+    {
+      "rank": 26,
+      "iana_id": 1755,
+      "name": "Netistrar Limited",
+      "domains": 26434.0,
+      "website": "https://www.netistrar.com",
+      "website_source": "N/A",
+      "notes": ""
+    },
+    {
+      "rank": 27,
+      "iana_id": 820,
+      "name": "PHPNET France DBA Nuxit",
+      "domains": 25968.0,
+      "website": "https://www.nuxit.com",
+      "website_source": "known_mapping",
+      "notes": "French hosting provider"
+    },
+    {
+      "rank": 28,
+      "iana_id": 818,
+      "name": "Interdominios, Inc.",
+      "domains": 24942.0,
+      "website": "https://www.interdominios.com",
+      "website_source": "known_mapping",
+      "notes": "Spanish domain registrar"
+    },
+    {
+      "rank": 29,
+      "iana_id": 1741,
+      "name": "Shinjiru Technology Sdn Bhd",
+      "domains": 24309.0,
+      "website": "https://www.shinjiru.com",
+      "website_source": "known_mapping",
+      "notes": "Malaysian hosting provider"
+    },
+    {
+      "rank": 30,
+      "iana_id": 1503,
+      "name": "PT Ardh Global Indonesia",
+      "domains": 21207.0,
+      "website": "https://www.ardhosting.com",
+      "website_source": "known_mapping",
+      "notes": "Indonesian hosting provider"
+    }
+  ]
+}

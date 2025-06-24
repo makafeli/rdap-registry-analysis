@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "service_provider": "LogicBoxes",
+    "rdap_url": "rdapserver.net",
+    "enrichment_date": "2024-01-15",
+    "total_registrars": 115,
+    "total_domains": 8131328
+  },
+  "sample_enriched_data": [
+    {
+      "iana_id": 303,
+      "name": "PDR Ltd. d/b/a PublicDomainRegistry.com",
+      "website": "https://publicdomainregistry.com",
+      "email": "compliance@publicdomainregistry.com",
+      "phone": "+1.2026219164",
+      "abuse_email": "abuse@publicdomainregistry.com",
+      "whois_server": "whois.publicdomainregistry.com",
+      "status": "Accredited",
+      "address": {
+        "street": "C/O BRAND DIALOGUE SARL, 4 RUE GRAHAM BELL",
+        "city": "LUXEMBOURG",
+        "postal_code": "L-3235",
+        "country": "LU"
+      },
+      "domains": 4845099,
+      "domain_percentage": "59.6%"
+    },
+    {
+      "iana_id": 955,
+      "name": "Launchpad.com Inc.",
+      "website": "https://launchpad.com",
+      "email": "support@launchpad.com",
+      "phone": "+1.4165350123",
+      "abuse_email": "abuse@launchpad.com",
+      "whois_server": "whois.launchpad.com",
+      "status": "Accredited",
+      "address": {
+        "street": "20 Toronto Street, Suite 1200",
+        "city": "Toronto",
+        "state": "ON",
+        "postal_code": "M5C 2B8",
+        "country": "CA"
+      },
+      "domains": 729662,
+      "domain_percentage": "9.0%"
+    },
+    {
+      "iana_id": 1636,
+      "name": "Hostinger, UAB",
+      "website": "https://www.hostinger.com",
+      "email": "domains@hostinger.com",
+      "phone": "+370.52071558",
+      "abuse_email": "abuse@hostinger.com",
+      "whois_server": "whois.hostinger.com",
+      "status": "Accredited",
+      "address": {
+        "street": "Jonavos g. 60C",
+        "city": "Kaunas",
+        "postal_code": "44192",
+        "country": "LT"
+      },
+      "domains": 590290,
+      "domain_percentage": "7.3%"
+    }
+  ],
+  "icann_api_info": {
+    "endpoint": "https://lookup.icann.org/api/registrar/{IANA_ID}",
+    "rate_limit": "1 request per second",
+    "available_fields": [
+      "ianaId",
+      "name",
+      "url",
+      "email",
+      "phone",
+      "fax",
+      "whoisServer",
+      "referralUrl",
+      "address",
+      "abuseContact",
+      "status"
+    ]
+  }
+}

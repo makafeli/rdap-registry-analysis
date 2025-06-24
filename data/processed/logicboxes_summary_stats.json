@@ -1,0 +1,54 @@
+{
+  "total_registrars": 115,
+  "total_domains": 8131328.0,
+  "avg_domains_per_registrar": 72601.14285714286,
+  "median_domains_per_registrar": 1067.0,
+  "top_10_by_domains": [
+    {
+      "name": "PDR Ltd. d/b/a PublicDomainRegistry.com",
+      "domain_count": 4845099.0
+    },
+    {
+      "name": "Launchpad.com Inc.",
+      "domain_count": 729662.0
+    },
+    {
+      "name": "Hostinger, UAB",
+      "domain_count": 590290.0
+    },
+    {
+      "name": "BigRock Solutions Ltd.",
+      "domain_count": 276454.0
+    },
+    {
+      "name": "IHS Telekom, Inc.",
+      "domain_count": 160821.0
+    },
+    {
+      "name": "NetEarth One Inc. d/b/a NetEarth",
+      "domain_count": 142479.0
+    },
+    {
+      "name": "Sav.com, LLC",
+      "domain_count": 135595.0
+    },
+    {
+      "name": "MAT BAO CORPORATION",
+      "domain_count": 134504.0
+    },
+    {
+      "name": "Beget LLC",
+      "domain_count": 103122.0
+    },
+    {
+      "name": "Tecnocr\u00c3\u00a1tica Centro de Datos, S.L.",
+      "domain_count": 101516.0
+    }
+  ],
+  "rdap_service_distribution": {
+    "LogicBoxes Core (rdapserver.net)": 115
+  },
+  "countries_with_icann_data": {},
+  "enrichment_success_rate": 0.0,
+  "note": "Updated for core gateway providers only: LogicBoxes, RRPProxy/CentralNic, and Tucows"
+}

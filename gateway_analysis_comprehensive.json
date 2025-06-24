@@ -1,0 +1,140 @@
+{
+  "gateway_providers": {
+    "Tucows": {
+      "total_registrars": 66,
+      "total_domains": 20188795,
+      "unique_rdap_urls": 21,
+      "rdap_urls": [
+        "endurance.rdap.tucows.com",
+        "brs.rdap.tucows.com",
+        "opensrs.rdap.tucows.com",
+        "enom.rdap.tucows.com",
+        "rdap.ascio.com",
+        "dreamhost.rdap.tucows.com",
+        "domainpeople.rdap.tucows.com",
+        "epag.rdap.tucows.com",
+        "webcentralgroup.rdap.tucows.com",
+        "tpp.rdap.tucows.com",
+        "netregistry.rdap.tucows.com",
+        "easyspace.rdap.tucows.com",
+        "paragon.rdap.tucows.com",
+        "easydns.rdap.tucows.com",
+        "papaki.rdap.tucows.com",
+        "iregister.rdap.tucows.com",
+        "registerca.rdap.tucows.com",
+        "interplanet.rdap.tucows.com",
+        "authenticweb.rdap.tucows.com",
+        "EIG.rdap.tucows.com",
+        "peoplebrowsr.rdap.tucows.com"
+      ],
+      "top_registrars": [
+        {
+          "name": "Tucows Domains Inc.",
+          "domains": 10194582,
+          "rdap_url": "opensrs.rdap.tucows.com"
+        },
+        {
+          "name": "eNom, LLC",
+          "domains": 5314291,
+          "rdap_url": "enom.rdap.tucows.com"
+        },
+        {
+          "name": "Domain.com, LLC",
+          "domains": 1749126,
+          "rdap_url": "endurance.rdap.tucows.com"
+        },
+        {
+          "name": "Ascio Technologies, Inc. Danmark - Filial af Ascio technologies, Inc. USA",
+          "domains": 935379,
+          "rdap_url": "rdap.ascio.com"
+        },
+        {
+          "name": "DreamHost, LLC",
+          "domains": 725334,
+          "rdap_url": "dreamhost.rdap.tucows.com"
+        },
+        {
+          "name": "DomainPeople, Inc.",
+          "domains": 226319,
+          "rdap_url": "domainpeople.rdap.tucows.com"
+        },
+        {
+          "name": "EPAG Domainservices GmbH",
+          "domains": 200439,
+          "rdap_url": "epag.rdap.tucows.com"
+        },
+        {
+          "name": "Webcentral Group Limited dba Melbourne IT",
+          "domains": 132661,
+          "rdap_url": "webcentralgroup.rdap.tucows.com"
+        },
+        {
+          "name": "Netregistry Wholesale Pty Ltd",
+          "domains": 129629,
+          "rdap_url": "tpp.rdap.tucows.com"
+        },
+        {
+          "name": "NetRegistry Pty Ltd.",
+          "domains": 107039,
+          "rdap_url": "netregistry.rdap.tucows.com"
+        }
+      ]
+    },
+    "RRPProxy/CentralNic": {
+      "total_registrars": 8,
+      "total_domains": 2278349,
+      "unique_rdap_urls": 1,
+      "rdap_urls": [
+        "rdap.rrpproxy.net"
+      ],
+      "top_registrars": [
+        {
+          "name": "Key-Systems GmbH",
+          "domains": 1413748,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "Key-Systems, LLC",
+          "domains": 465375,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "Moniker Online Services LLC",
+          "domains": 381144,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "IP Twins SAS",
+          "domains": 11340,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "Nakazawa Trading Co.,Ltd.",
+          "domains": 5921,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "Sky Clear Co., Ltd.",
+          "domains": 277,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "Dai Nippon Joho System Co., Ltd.",
+          "domains": 275,
+          "rdap_url": "rdap.rrpproxy.net"
+        },
+        {
+          "name": "WingNames Co., Ltd.",
+          "domains": 269,
+          "rdap_url": "rdap.rrpproxy.net"
+        }
+      ]
+    }
+  },
+  "potential_gateways": [],
+  "summary": {
+    "total_domains_dataset": 214508603,
+    "total_domains_gateways": 22467144,
+    "gateway_market_share_percent": 10.473772933013786
+  }
+}

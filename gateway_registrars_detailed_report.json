@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "total_registrars": 1915,
+    "total_domains": 43285517,
+    "extraction_date": "2025-06-24",
+    "source": "RDAP lookups Excel file"
+  },
+  "gateway_providers": [
+    {
+      "name": "Tucows",
+      "registrar_count": 64,
+      "total_domains": 19249197,
+      "percentage_of_total_registrars": 3.34,
+      "percentage_of_total_domains": 44.47
+    },
+    {
+      "name": "Network Solutions",
+      "registrar_count": 476,
+      "total_domains": 8185038,
+      "percentage_of_total_registrars": 24.86,
+      "percentage_of_total_domains": 18.91
+    },
+    {
+      "name": "RDAP Server",
+      "registrar_count": 115,
+      "total_domains": 8131328,
+      "percentage_of_total_registrars": 6.01,
+      "percentage_of_total_domains": 18.79
+    },
+    {
+      "name": "NameBright",
+      "registrar_count": 1252,
+      "total_domains": 5441605,
+      "percentage_of_total_registrars": 65.38,
+      "percentage_of_total_domains": 12.57
+    },
+    {
+      "name": "RRPProxy/CentralNic",
+      "registrar_count": 8,
+      "total_domains": 2278349,
+      "percentage_of_total_registrars": 0.42,
+      "percentage_of_total_domains": 5.26
+    }
+  ]
+}
