@@ -94,9 +94,9 @@ vercel --prod
 
 ## 🔒 Authentication
 
-### Default Credentials
-- **Password**: `rdap2024`
-- **Session Duration**: 24 hours
+### Default Configuration
+- **Password**: Secure password configured via environment variables
+- **Session Duration**: Unlimited (no auto-logout)
 
 ### Custom Configuration
 Set environment variables to customize authentication:
@@ -104,7 +104,7 @@ Set environment variables to customize authentication:
 ```bash
 # In .env.local (local development)
 REACT_APP_DASHBOARD_PASSWORD=your-secure-password
-REACT_APP_SESSION_DURATION_HOURS=8
+REACT_APP_SESSION_DURATION_HOURS=0  # 0 = unlimited, >0 = hours
 
 # In Vercel dashboard (production)
 # Add environment variables under Settings > Environment Variables
@@ -112,10 +112,11 @@ REACT_APP_SESSION_DURATION_HOURS=8
 
 ### Security Features
 - **Client-side authentication** with localStorage session management
-- **Auto-logout** after configurable session duration
+- **Unlimited sessions** by default (configurable)
 - **Password masking** with show/hide toggle
 - **Session persistence** across browser refreshes
 - **Secure logout** with confirmation prompt
+- **Strong password protection** without visible credentials
 
 ## 📁 Project Structure
 

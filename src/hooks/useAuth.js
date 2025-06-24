@@ -14,16 +14,23 @@ const useAuth = () => {
         if (authStatus === 'true' && authTime) {
           const sessionTime = parseInt(authTime);
           const currentTime = Date.now();
-          const sessionHours = parseInt(process.env.REACT_APP_SESSION_DURATION_HOURS) || 24;
-          const sessionDuration = sessionHours * 60 * 60 * 1000; // Convert hours to milliseconds
+          const sessionHours = parseInt(process.env.REACT_APP_SESSION_DURATION_HOURS) || 0;
           
-          // Check if session is still valid
-          if (currentTime - sessionTime < sessionDuration) {
+          // Check if session is unlimited (0) or still valid
+          if (sessionHours === 0) {
+            // Unlimited session
             setIsAuthenticated(true);
           } else {
-            // Session expired, clear storage
-            localStorage.removeItem('rdap_dashboard_auth');
-            localStorage.removeItem('rdap_dashboard_auth_time');
+            const sessionDuration = sessionHours * 60 * 60 * 1000; // Convert hours to milliseconds
+            
+            // Check if session is still valid
+            if (currentTime - sessionTime < sessionDuration) {
+              setIsAuthenticated(true);
+            } else {
+              // Session expired, clear storage
+              localStorage.removeItem('rdap_dashboard_auth');
+              localStorage.removeItem('rdap_dashboard_auth_time');
+            }
           }
         }
       } catch (error) {

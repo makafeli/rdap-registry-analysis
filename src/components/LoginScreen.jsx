@@ -8,7 +8,7 @@ const LoginScreen = ({ onLogin }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Get password from environment variable or use default
-  const DASHBOARD_PASSWORD = process.env.REACT_APP_DASHBOARD_PASSWORD || 'rdap2024';
+  const DASHBOARD_PASSWORD = process.env.REACT_APP_DASHBOARD_PASSWORD || 'amu!zhp@bdv5NJV@rbp';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,16 +107,6 @@ const LoginScreen = ({ onLogin }) => {
           </div>
         </div>
 
-        {/* Demo Credentials (Remove in production) */}
-        <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-          <div className="flex items-start gap-2">
-            <AlertCircle className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />
-            <div className="text-sm">
-              <p className="font-medium text-yellow-800">Demo Credentials:</p>
-              <p className="text-yellow-700">Password: <code className="bg-yellow-100 px-1 rounded">rdap2024</code></p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
