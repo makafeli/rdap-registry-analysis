@@ -1,0 +1,33 @@
+{
+  "name": "rdap-registry-analysis",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/data/(.*)",
+      "dest": "/data/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/data/(.*)",
+      "destination": "/data/$1"
+    }
+  ]
+}

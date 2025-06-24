@@ -1,130 +1,191 @@
-# RDAP Registry Analysis Project
+# RDAP Registry Analysis Dashboard
 
-This project analyzes RDAP (Registration Data Access Protocol) lookups data, focusing on Registry Gateway (LogicBoxes) service patterns and registrar distribution.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/makafeli/rdap-registry-analysis)
 
-## Project Structure
+Comprehensive analysis of RDAP (Registration Data Access Protocol) adoption patterns and gateway solutions across domain registrars. Interactive dashboard showcasing gateway provider market insights and registrar ecosystem analysis.
+
+## 🚀 Live Demo
+
+Deploy your own instance instantly with Vercel: **[Deploy Now →](https://vercel.com/new/clone?repository-url=https://github.com/makafeli/rdap-registry-analysis)**
+
+## 📊 Project Overview
+
+This project analyzes RDAP endpoints and identifies gateway solution providers, focusing on the core infrastructure providers that serve multiple independent registrars through shared RDAP services.
+
+### Key Insights
+- **3 Core Gateway Providers**: LogicBoxes, Tucows, RRPProxy/CentralNic
+- **Market Coverage**: 14.3% of domains (30.6M) use gateway solutions  
+- **Registrar Efficiency**: 189 gateway registrars vs 2,169 self-hosted
+- **Market Leaders**: Tucows (66 registrars), LogicBoxes (115 registrars), RRPProxy/CentralNic (8 registrars)
+
+## ✨ Key Features
+
+- **🔍 Comprehensive Gateway Analysis**: Interactive dashboard with market share insights
+- **📋 Registry Gateway Users**: Searchable table of all 189 gateway registrars
+- **📈 Data Visualizations**: Charts showing provider distribution and domain metrics
+- **💾 Export Functionality**: CSV export for all data tables
+- **🎨 Professional UI**: Clean, responsive design with Tailwind CSS
+- **⚡ Performance Optimized**: Fast loading with optimized build
+
+## 🛠️ Quick Start
+
+### Prerequisites
+- Node.js 16+ and npm/yarn
+- Git
+
+### Local Development
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/makafeli/rdap-registry-analysis.git
+   cd rdap-registry-analysis
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**:
+   ```bash
+   npm start
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+### Deploy to Vercel
+
+#### Option 1: One-Click Deploy
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/makafeli/rdap-registry-analysis)
+
+#### Option 2: Vercel CLI
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy from your local directory
+vercel
+
+# Or deploy from GitHub
+vercel --prod
+```
+
+#### Option 3: GitHub Integration
+1. Connect your GitHub account to Vercel
+2. Import this repository
+3. Deploy automatically with each push
+
+## 📁 Project Structure
 
 ```
 rdap-registry-analysis/
-├── src/                        # React components for visualization
-│   ├── components/
-│   │   ├── RDAPAnalysisDashboard.jsx
-│   │   └── RegistrarEnrichmentTool.jsx
-│   ├── App.jsx
-│   └── index.js
-├── scripts/                    # Data processing scripts
-│   ├── enrich_registrars.sh   # Bash script for ICANN API
-│   ├── enrich_registrars.py   # Python script for bulk processing
-│   └── analyze_rdap.js        # JavaScript analysis script
-├── data/                       # Data files and templates
-│   ├── registry_gateway_template.csv
-│   └── sample_enriched_data.json
-├── docs/                       # Documentation
-│   └── analysis_report.md
-├── package.json               # React project configuration
-└── README.md                  # This file
+├── src/                           # React application source
+│   ├── components/               # Dashboard components
+│   │   ├── GatewayComparison.jsx # Main analysis dashboard
+│   │   └── RegistryGatewayUsers.jsx # Registrar table
+│   └── App.jsx                   # Main application
+├── public/                       # Static assets
+│   └── data/processed/          # JSON data files for dashboard
+├── data/                        # Raw and processed datasets
+├── scripts/                     # Analysis and enrichment tools
+├── docs/                        # Documentation and reports
+├── vercel.json                  # Vercel deployment configuration
+└── package.json                 # Dependencies and scripts
 ```
 
-## Key Findings
-
-### Registry Gateway (LogicBoxes)
-- **115 registrars** use rdapserver.net (Registry Gateway by LogicBoxes)
-- Manages **8.1 million domains** (6.3% of all tracked domains)
-- Average: **70,707 domains per registrar**
-- Top user: PDR Ltd. with 4.8M domains
-
-### Market Distribution
-- Total registrars analyzed: **2,358**
-- Unique RDAP URLs: **382**
-- Market leaders:
-  - rdap.namebright.com: 53.1% of registrars
-  - rdap.networksolutions.com: 20.2%
-  - rdapserver.net: 4.9%
-
-## Getting Started
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Run the React Dashboard
-```bash
-npm start
-```
-
-### 3. Enrich Registrar Data
-
-#### Using Bash Script:
-```bash
-cd scripts
-chmod +x enrich_registrars.sh
-./enrich_registrars.sh
-```
-
-#### Using Python:
-```bash
-cd scripts
-pip install -r requirements.txt
-python enrich_registrars.py
-```
-
-## Data Sources
-
-1. **Original Excel File**: `Rdap lookups.xlsx`
-   - Contains IANA IDs, registrar names, RDAP URLs
-   - Domain count data in second sheet
-
-2. **ICANN API**: For enriching with contact information
-   - Endpoint: `https://lookup.icann.org/api/registrar/{IANA_ID}`
-
-3. **ICANN Bulk Export**: Weekly CSV with all registrar data
-   - URL: https://www.icann.org/registrar-reports/accredited-list.html
-
-## Tools Included
+## 📊 Dashboard Components
 
 ### 1. RDAP Analysis Dashboard
-Interactive React dashboard showing:
-- Market distribution pie charts
-- Domain distribution analysis
-- Registry Gateway user list with search
-- Key insights and patterns
+- **Market Share Visualization**: Pie charts and bar graphs
+- **Key Metrics**: Domain counts, registrar statistics, gateway adoption
+- **Provider Breakdown**: Detailed analysis of each gateway provider
+- **Export Options**: CSV download for analysis data
 
-### 2. Registrar Enrichment Tool
-React component for:
-- Selecting registrars to enrich
-- Generating bash/Python scripts
-- Preview of enriched data format
+### 2. Registry Gateway Users
+- **Interactive Table**: All 189 gateway registrars with sorting/filtering
+- **Search Functionality**: Find registrars by name, IANA ID, or provider
+- **Provider Filtering**: Filter by LogicBoxes, Tucows, or RRPProxy/CentralNic
+- **Domain Range Filters**: Small, medium, large, enterprise categories
 
-### 3. Data Processing Scripts
-- **enrich_registrars.sh**: Bash script using curl and jq
-- **enrich_registrars.py**: Python script with pandas
-- **analyze_rdap.js**: Node.js script for data analysis
+## 🔧 Analysis Tools
 
-## Usage with Claude Code CLI
-
-To continue development with Claude Code CLI:
-
+### Data Enrichment Scripts
 ```bash
-cd /Users/yasinboelhouwer/rdap-registry-analysis
-claude-code .
+# Extract LogicBoxes registrar data
+python scripts/extract_logicboxes_data.py
+
+# Enrich registrar contact information  
+python scripts/enrich_logicboxes_websites.py
+
+# Comprehensive gateway analysis
+python scripts/analyze_rdap_gateways.py
 ```
 
-Then you can:
-- Enhance the React visualizations
-- Add more data analysis features
-- Integrate with additional data sources
-- Build an API backend
-- Add database storage
+### Requirements
+- Python 3.8+ with pandas, requests
+- Access to ICANN registrar database
+- RDAP endpoint data
 
-## Next Steps
+## 📈 Analysis Results
 
-1. **Data Enrichment**: Run the enrichment scripts to add contact information
-2. **Database Integration**: Store enriched data in a database
-3. **API Development**: Create REST API for data access
-4. **Advanced Analytics**: Add trend analysis and predictions
-5. **Export Features**: Generate reports in various formats
+### Gateway Provider Market Share
+| Provider | Registrars | Domains | Market Share |
+|----------|------------|---------|--------------|
+| **Tucows** | 66 | 20.2M | 9.41% |
+| **LogicBoxes** | 115 | 8.1M | 3.79% |
+| **RRPProxy/CentralNic** | 8 | 2.3M | 1.06% |
+| **Total Gateway** | **189** | **30.6M** | **14.26%** |
 
-## License
+### Key Findings
+- **Efficiency Advantage**: Gateway providers show higher domain-to-registrar ratios
+- **Market Concentration**: Top 3 providers serve 189 registrars efficiently
+- **Growth Potential**: 85.7% market still uses self-hosted RDAP infrastructure
+- **Infrastructure Sharing**: Successful model for smaller registrars
 
-This project is for analysis purposes. Please respect ICANN's terms of service when accessing their APIs.
+## 🌐 Data Sources
+
+- **ICANN Registrar Database**: Official registrar information and contact details
+- **RDAP Endpoints**: Live RDAP server configurations and response data  
+- **Domain Statistics**: Registrar domain portfolio sizes and market share
+- **Gateway Analysis**: Custom analysis of shared infrastructure patterns
+
+## 🚀 Technologies Used
+
+- **Frontend**: React 18, Recharts, Tailwind CSS, Lucide Icons
+- **Build Tools**: Create React App, Vite-compatible
+- **Data Processing**: Python (pandas, requests, json)
+- **Deployment**: Vercel with automatic GitHub integration
+- **Analysis**: JavaScript, Python scripting
+
+## 🤝 Contributing
+
+1. **Fork the repository**
+2. **Create feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit changes**: `git commit -m 'Add amazing feature'`
+4. **Push to branch**: `git push origin feature/amazing-feature`
+5. **Open Pull Request**
+
+### Development Guidelines
+- Follow existing code style and structure
+- Add appropriate error handling
+- Update documentation for new features
+- Test locally before submitting PR
+
+## 📝 License
+
+This project is for research and analysis purposes. Please credit data sources appropriately when using this analysis.
+
+## 📞 Contact & Support
+
+- **Repository**: [GitHub Issues](https://github.com/makafeli/rdap-registry-analysis/issues)
+- **Documentation**: See `docs/` directory for detailed analysis reports
+- **Deployment**: [Vercel Documentation](https://vercel.com/docs)
+
+---
+
+**Built with ❤️ for the domain industry research community**
+
+🤖 *Generated with [Claude Code](https://claude.ai/code)*
