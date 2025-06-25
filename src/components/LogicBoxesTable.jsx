@@ -19,7 +19,7 @@ const LogicBoxesTable = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/data/processed/logicboxes_registrars_enriched.json');
+        const response = await fetch('/data/processed/logicboxes_registrars_enriched_v2.json');
         if (!response.ok) {
           throw new Error(`Failed to load LogicBoxes data: ${response.status} ${response.statusText}`);
         }
@@ -48,7 +48,9 @@ const LogicBoxesTable = () => {
         (registrar.rdap_url && registrar.rdap_url.toLowerCase().includes(searchTerm.toLowerCase())) ||
         (registrar.website && registrar.website.toLowerCase().includes(searchTerm.toLowerCase())) ||
         (registrar.whois_server && registrar.whois_server.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (registrar.status && registrar.status.toLowerCase().includes(searchTerm.toLowerCase()))
+        (registrar.status && registrar.status.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (registrar.notes && registrar.notes.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (registrar.website_source && registrar.website_source.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 
@@ -146,7 +148,7 @@ const LogicBoxesTable = () => {
 
   // Export to CSV
   const exportToCSV = () => {
-    const headers = ['IANA ID', 'Name', 'Domain Count', 'RDAP Service', 'Category', 'RDAP URL', 'Website', 'WHOIS Server', 'Status'];
+    const headers = ['IANA ID', 'Name', 'Domain Count', 'RDAP Service', 'Category', 'RDAP URL', 'Website', 'Website Source', 'Website Confidence', 'Notes', 'WHOIS Server', 'Status', 'Gateway Provider', 'Duplicate'];
     const csvContent = [
       headers.join(','),
       ...sortedData.map(registrar => [
@@ -157,8 +159,13 @@ const LogicBoxesTable = () => {
         `"${registrar.category || ''}"`,
         `"${registrar.rdap_url || ''}"`,
         `"${registrar.website || ''}"`,
+        `"${registrar.website_source || ''}"`,
+        `"${registrar.website_confidence || ''}"`,
+        `"${registrar.notes || ''}"`,
         `"${registrar.whois_server || ''}"`,
-        `"${registrar.status || ''}"`
+        `"${registrar.status || ''}"`,
+        `"${registrar.gateway_provider || ''}"`,
+        `"${registrar.duplicate || ''}"`
       ].join(','))
     ].join('\\n');
 
@@ -166,7 +173,7 @@ const LogicBoxesTable = () => {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'logicboxes_registrars_enriched.csv';
+    a.download = 'logicboxes_registrars_enriched_v2.csv';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -365,6 +372,12 @@ const LogicBoxesTable = () => {
                     )}
                   </div>
                 </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Website Source
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Notes
+                </th>
                 <th 
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                   onClick={() => handleSort('whois_server')}
@@ -453,6 +466,29 @@ const LogicBoxesTable = () => {
                       >
                         {registrar.website.replace(/^https?:\/\//, '')}
                       </a>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {registrar.website_source ? (
+                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                        registrar.website_source === 'known_mapping' 
+                          ? 'bg-green-100 text-green-800'
+                          : registrar.website_source === 'name_pattern'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}>
+                        {registrar.website_source}
+                        {registrar.website_confidence && ` (${registrar.website_confidence})`}
+                      </span>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {registrar.notes ? (
+                      <span className="text-gray-600 italic">{registrar.notes}</span>
                     ) : (
                       <span className="text-gray-400">—</span>
                     )}

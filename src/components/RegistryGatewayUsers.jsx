@@ -10,7 +10,8 @@ const RegistryGatewayUsers = () => {
   const [filters, setFilters] = useState({
     gatewayProvider: '',
     domainCountRange: '',
-    category: ''
+    category: '',
+    websiteSource: ''
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(50);
@@ -19,12 +20,44 @@ const RegistryGatewayUsers = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/data/processed/all_gateway_registrars.json');
-        if (!response.ok) {
-          throw new Error(`Failed to load gateway registrars: ${response.status} ${response.statusText}`);
+        // Load both data sources
+        const [gatewayResponse, logicboxesResponse] = await Promise.all([
+          fetch('/data/processed/all_gateway_registrars.json'),
+          fetch('/data/processed/logicboxes_registrars_enriched_v2.json')
+        ]);
+
+        if (!gatewayResponse.ok) {
+          throw new Error(`Failed to load gateway registrars: ${gatewayResponse.status} ${gatewayResponse.statusText}`);
         }
-        const registrars = await response.json();
-        setData(registrars);
+        if (!logicboxesResponse.ok) {
+          throw new Error(`Failed to load LogicBoxes enriched data: ${logicboxesResponse.status} ${logicboxesResponse.statusText}`);
+        }
+
+        const gatewayRegistrars = await gatewayResponse.json();
+        const logicboxesEnriched = await logicboxesResponse.json();
+
+        // Create a map of LogicBoxes enriched data by IANA ID
+        const enrichedMap = new Map(logicboxesEnriched.map(reg => [reg.iana_id, reg]));
+
+        // Merge the enriched data with gateway registrars
+        const mergedData = gatewayRegistrars.map(registrar => {
+          if (registrar.gateway_provider === 'LogicBoxes' && enrichedMap.has(registrar.iana_id)) {
+            const enriched = enrichedMap.get(registrar.iana_id);
+            return {
+              ...registrar,
+              website: enriched.website || registrar.website,
+              website_source: enriched.website_source,
+              website_confidence: enriched.website_confidence,
+              notes: enriched.notes,
+              whois_server: enriched.whois_server || registrar.whois_server,
+              status: enriched.status || registrar.status,
+              rdap_service: enriched.rdap_service || registrar.rdap_service
+            };
+          }
+          return registrar;
+        });
+
+        setData(mergedData);
       } catch (err) {
         console.error('Error loading data:', err);
         setError(err.message);
@@ -46,7 +79,10 @@ const RegistryGatewayUsers = () => {
         registrar.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         registrar.iana_id.toString().includes(searchTerm) ||
         (registrar.rdap_url && registrar.rdap_url.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (registrar.gateway_provider && registrar.gateway_provider.toLowerCase().includes(searchTerm.toLowerCase()))
+        (registrar.gateway_provider && registrar.gateway_provider.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (registrar.website && registrar.website.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (registrar.notes && registrar.notes.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (registrar.whois_server && registrar.whois_server.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 
@@ -75,6 +111,15 @@ const RegistryGatewayUsers = () => {
         filtered = filtered.filter(registrar => !registrar.category);
       } else {
         filtered = filtered.filter(registrar => registrar.category === filters.category);
+      }
+    }
+
+    // Apply website source filter
+    if (filters.websiteSource) {
+      if (filters.websiteSource === 'none') {
+        filtered = filtered.filter(registrar => !registrar.website_source);
+      } else {
+        filtered = filtered.filter(registrar => registrar.website_source === filters.websiteSource);
       }
     }
 
@@ -137,14 +182,14 @@ const RegistryGatewayUsers = () => {
 
   // Clear all filters
   const clearFilters = () => {
-    setFilters({ gatewayProvider: '', domainCountRange: '', category: '' });
+    setFilters({ gatewayProvider: '', domainCountRange: '', category: '', websiteSource: '' });
     setSearchTerm('');
     setCurrentPage(1);
   };
 
   // Export to CSV
   const exportToCSV = () => {
-    const headers = ['IANA ID', 'Name', 'Domain Count', 'Gateway Provider', 'Category', 'RDAP URL'];
+    const headers = ['IANA ID', 'Name', 'Domain Count', 'Gateway Provider', 'Category', 'RDAP URL', 'Website', 'Website Source', 'Website Confidence', 'Notes', 'WHOIS Server', 'Status'];
     const csvContent = [
       headers.join(','),
       ...sortedData.map(registrar => [
@@ -153,7 +198,13 @@ const RegistryGatewayUsers = () => {
         registrar.domain_count || 0,
         `"${registrar.gateway_provider || ''}"`,
         `"${registrar.category || ''}"`,
-        `"${registrar.rdap_url || ''}"`
+        `"${registrar.rdap_url || ''}"`,
+        `"${registrar.website || ''}"`,
+        `"${registrar.website_source || ''}"`,
+        `"${registrar.website_confidence || ''}"`,
+        `"${registrar.notes || ''}"`,
+        `"${registrar.whois_server || ''}"`,
+        `"${registrar.status || ''}"`
       ].join(','))
     ].join('\n');
 
@@ -161,7 +212,7 @@ const RegistryGatewayUsers = () => {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'all_gateway_registrars.csv';
+    a.download = 'gateway_registrars_enriched.csv';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -184,7 +235,7 @@ const RegistryGatewayUsers = () => {
     const colors = {
       'Tucows': 'bg-blue-100 text-blue-800',
       'Network Solutions': 'bg-green-100 text-green-800',
-      'RDAP Server': 'bg-purple-100 text-purple-800',
+      'LogicBoxes': 'bg-purple-100 text-purple-800',
       'NameBright': 'bg-orange-100 text-orange-800',
       'RRPProxy/CentralNic': 'bg-red-100 text-red-800'
     };
@@ -245,8 +296,37 @@ const RegistryGatewayUsers = () => {
           })}
         </div>
 
+        {/* Enrichment Statistics */}
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-4 mb-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-semibold text-green-900">Data Enrichment Status</h3>
+              <p className="text-xs text-green-700 mt-1">
+                {(() => {
+                  const logicboxesData = data.filter(r => r.gateway_provider === 'LogicBoxes');
+                  const withWebsites = logicboxesData.filter(r => r.website).length;
+                  const knownMappings = logicboxesData.filter(r => r.website_source === 'known_mapping').length;
+                  const patterns = logicboxesData.filter(r => r.website_source === 'name_pattern').length;
+                  
+                  return `${withWebsites}/${logicboxesData.length} LogicBoxes registrars enriched (${((withWebsites / logicboxesData.length) * 100).toFixed(0)}%)`;
+                })()}
+              </p>
+            </div>
+            <div className="flex items-center gap-3 text-xs">
+              <div className="flex items-center gap-1">
+                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                <span>Verified</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                <span>Pattern</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Search and Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
           {/* Search */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
@@ -297,10 +377,22 @@ const RegistryGatewayUsers = () => {
               </option>
             ))}
           </select>
+
+          {/* Website Source Filter */}
+          <select
+            value={filters.websiteSource}
+            onChange={(e) => handleFilterChange('websiteSource', e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="">All Website Sources</option>
+            <option value="known_mapping">✓ Verified</option>
+            <option value="name_pattern">~ Pattern Match</option>
+            <option value="none">No Website</option>
+          </select>
         </div>
 
         {/* Clear Filters */}
-        {(searchTerm || filters.gatewayProvider || filters.domainCountRange || filters.category) && (
+        {(searchTerm || filters.gatewayProvider || filters.domainCountRange || filters.category || filters.websiteSource) && (
           <div className="mt-4">
             <button
               onClick={clearFilters}
@@ -377,6 +469,37 @@ const RegistryGatewayUsers = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   RDAP URL
                 </th>
+                <th 
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                  onClick={() => handleSort('website')}
+                >
+                  <div className="flex items-center gap-2">
+                    Website & Source
+                    {sortConfig.key === 'website' && (
+                      sortConfig.direction === 'desc' ? <SortDesc size={14} /> : <SortAsc size={14} />
+                    )}
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <div className="flex items-center gap-1">
+                    Notes
+                    <span className="text-gray-400" title="Business type and location">ℹ</span>
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  WHOIS Server
+                </th>
+                <th 
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                  onClick={() => handleSort('status')}
+                >
+                  <div className="flex items-center gap-2">
+                    Status
+                    {sortConfig.key === 'status' && (
+                      sortConfig.direction === 'desc' ? <SortDesc size={14} /> : <SortAsc size={14} />
+                    )}
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -425,6 +548,67 @@ const RegistryGatewayUsers = () => {
                     <code className="text-xs bg-gray-100 px-2 py-1 rounded">
                       {registrar.rdap_url}
                     </code>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {registrar.website ? (
+                      <div className="flex items-center gap-2">
+                        <a 
+                          href={registrar.website} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline truncate max-w-xs"
+                        >
+                          {registrar.website.replace(/^https?:\/\/(www\.)?/, '')}
+                        </a>
+                        {registrar.website_source && (
+                          <div className="flex items-center gap-1">
+                            <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded ${
+                              registrar.website_source === 'known_mapping' 
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-yellow-100 text-yellow-800'
+                            }`}>
+                              {registrar.website_source === 'known_mapping' ? '✓' : '~'}
+                            </span>
+                            {registrar.website_confidence && (
+                              <span className="text-xs text-gray-500">
+                                {registrar.website_confidence}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {registrar.notes ? (
+                      <span className="text-gray-600 text-xs">{registrar.notes}</span>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-900">
+                    {registrar.whois_server ? (
+                      <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+                        {registrar.whois_server}
+                      </code>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {registrar.status ? (
+                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                        registrar.status === 'Active' 
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-yellow-100 text-yellow-800'
+                      }`}>
+                        {registrar.status}
+                      </span>
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
                   </td>
                 </tr>
               ))}

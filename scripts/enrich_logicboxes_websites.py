@@ -90,7 +90,17 @@ class LogicBoxesWebsiteEnricher:
             1652: {"website": "https://www.webworldireland.com", "notes": "Irish hosting provider"},
             1083: {"website": "https://web-solutions.eu", "notes": "European hosting provider"},
             1709: {"website": "https://www.yourdomainprovider.com", "notes": "Domain services"},
-            1517: {"website": "https://www.z.com", "notes": "Japanese domain registrar"}
+            1517: {"website": "https://www.z.com", "notes": "Japanese domain registrar"},
+            
+            # Additional mappings for missing registrars
+            3865: {"website": "https://www.communityadvice.cz", "notes": "Czech domain registrar"},
+            3870: {"website": "https://www.regdom.cz", "notes": "Czech domain services"},
+            3245: {"website": "https://www.arcanes.fr", "notes": "French technology company"},
+            835: {"website": "https://www.kuwaitnet.com", "notes": "Kuwaiti ISP and registrar"},
+            1492: {"website": "https://www.neen.it", "notes": "Italian technology company"},
+            3801: {"website": "https://www.buzinessware.com", "notes": "UAE technology company"},
+            1123: {"website": "https://www.magicfriday.com", "notes": "Domain services"},
+            1144: {"website": "https://www.theregistrarservice.com", "notes": "Domain registration services"}
         }
     
     def _extract_potential_website(self, name: str) -> Optional[str]:
